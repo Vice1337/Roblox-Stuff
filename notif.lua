@@ -189,7 +189,7 @@ Notification.AutomaticSize = Enum.AutomaticSize.Y
 Container.AutomaticSize = Enum.AutomaticSize.Y
 Body.AutomaticSize = Enum.AutomaticSize.Y
 
--- remove clones: 
+
 
 if isExistance then
 	UIListLayout:Destroy()
@@ -197,7 +197,7 @@ if isExistance then
 	Container:Destroy()
 end
 
--- script converted by vice
+
 
 local T = game:GetService('TweenService')
 local t = TweenInfo.new(0.5, Enum.EasingStyle.Quint)
