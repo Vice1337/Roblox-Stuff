@@ -203,33 +203,33 @@ local T = game:GetService('TweenService')
 local t = TweenInfo.new(0.5, Enum.EasingStyle.Quint)
 local tp = NotificationParent
 
-function prompt(title, text, closeTime, close)
-	local Prompt = Notification:Clone()
+function sendnotif(title, text, closeTime, close)
+	local sendnotif = Notification:Clone()
 	local Sound = Instance.new('Sound', Notification)
 
-	Prompt.Visible = true
-	Prompt.Container.Top.Title.Text = title
-	Prompt.Container.Body.Content.Text = text
+	sendnotif.Visible = true
+	sendnotif.Container.Top.Title.Text = title
+	sendnotif.Container.Body.Content.Text = text
 
-	Prompt.Parent = NotificationParent
+	sendnotif.Parent = NotificationParent
 	Sound.SoundId = "rbxassetid://6518811702"
 	Sound:Play()
 
-	T:Create(Prompt.Container, t, {Position = UDim2.new(0, 0, 0, 0)}):Play()
+	T:Create(sendnotif.Container, t, {Position = UDim2.new(0, 0, 0, 0)}):Play()
 
 	-- auto size
-	Prompt.AutomaticSize = Enum.AutomaticSize.Y
-	Prompt.Container.AutomaticSize = Enum.AutomaticSize.Y
-	Prompt.Container.Body.AutomaticSize = Enum.AutomaticSize.Y
-	Prompt.Container.Body.Content.AutomaticSize = Enum.AutomaticSize.Y
+	sendnotif.AutomaticSize = Enum.AutomaticSize.Y
+	sendnotif.Container.AutomaticSize = Enum.AutomaticSize.Y
+	sendnotif.Container.Body.AutomaticSize = Enum.AutomaticSize.Y
+	sendnotif.Container.Body.Content.AutomaticSize = Enum.AutomaticSize.Y
 
-	Prompt.Container.Top.Exit.Button.MouseButton1Click:Connect(function()
-		T:Create(Prompt.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
+	sendnotif.Container.Top.Exit.Button.MouseButton1Click:Connect(function()
+		T:Create(sendnotif.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
 		wait(0.48)
-		Prompt:Destroy()
+		sendnotif:Destroy()
 	end)
 	
-	Prompt.Container.Top.Exit.Visible = close
+	sendnotif.Container.Top.Exit.Visible = close
 
 	wait(1)
 
@@ -239,9 +239,9 @@ function prompt(title, text, closeTime, close)
 		if typeof(closeTime) == "number" then
 			task.wait(closeTime)
 			local s = pcall(function()
-				T:Create(Prompt.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
+				T:Create(sendnotif.Container, t, {Position = UDim2.new(1.15, 0, 0, 0)}):Play()
 				wait(0.48)
-				Prompt:Destroy()
+				sendnotif:Destroy()
 			end)
 			if not s then
 				print('Already closed.')
@@ -252,8 +252,8 @@ end
 
 local vhnotiflib = {}
 
-function vhnotiflib.prompt(title, description, closeTime)
-        prompt(title, description, closeTime, true)
+function vhnotiflib.sendnotif(title, description, closeTime)
+        sendnotif(title, description, closeTime, true)
 end
 
 return vhnotiflib
