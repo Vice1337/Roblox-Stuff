@@ -197,7 +197,7 @@ if isExistance then
 	Container:Destroy()
 end
 
--- script converted by saypotato
+-- script converted by vice
 
 local T = game:GetService('TweenService')
 local t = TweenInfo.new(0.5, Enum.EasingStyle.Quint)
@@ -250,14 +250,10 @@ function prompt(title, text, closeTime, close)
 	end)
 end
 
-local lib = {}
+local vhnotiflib = {}
 
-function lib.prompt(title, description, closeTime)
-	if getgenv().xscriptId == 'NjE3Mjdy' or getgenv().xscriptId ~= nil then
-        prompt("Request Denied :(", "GuardScripts is banned by Notificate. If you used any other script from Guard, search the original.", 60, false)
-    else
+function vhnotiflib.prompt(title, description, closeTime)
         prompt(title, description, closeTime, true)
-    end
 end
 
-return lib
+return vhnotiflib
